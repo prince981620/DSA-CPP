@@ -14,6 +14,7 @@ class Node{
         right = NULL;
     }
 };
+
 Node* buildTree(){
     int data;
     cout << "enter the Data : ";
@@ -30,6 +31,7 @@ Node* buildTree(){
 
     return root;
 }
+
 void levelOrderTraversel(Node* root){
     queue<Node*>q;
     q.push(root);
@@ -45,6 +47,7 @@ void levelOrderTraversel(Node* root){
         }
     }
 }
+
 void levelOrderTraverselInRow(Node* root){
     queue<Node*>q;
     q.push(root);
@@ -70,6 +73,46 @@ void levelOrderTraverselInRow(Node* root){
     }
 
 }
+
+void preOderTraversel(Node* root){
+    // NLR
+    if(root == NULL){
+        return;
+    }
+    cout << root->data << " ";
+    preOderTraversel(root->left);
+    preOderTraversel(root->right);
+}
+
+void inOrderTraversel(Node* root){
+    // LNR
+    if(root == NULL){
+        return;
+    }
+    inOrderTraversel(root->left);
+    cout << root->data << " ";
+    inOrderTraversel(root->right);
+}
+
+void postOderTraversel(Node* root){
+    // LRN
+    if(root == NULL){
+        return;
+    }
+    postOderTraversel(root->left);
+    postOderTraversel(root->right);
+    cout << root->data << " ";
+}
+
+int height(Node* root){
+    if(root == NULL){
+        return 0;
+    }
+    int left = height(root->left);
+    int right = height(root->right);
+    return max(left,right) + 1;
+}
+
 int main(){
     Node* root = NULL;
     root = buildTree();
@@ -77,4 +120,4 @@ int main(){
     cout << endl << "printing row wise traversel" << endl ;
     levelOrderTraverselInRow(root);
     
-}
+} 
