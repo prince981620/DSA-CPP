@@ -59,7 +59,7 @@ void levelOrderTraversel(Node* root){
         }
     }
     cout << endl;
-}
+}   
 void preOrderTraversel(Node* root){
     // NLR
     if(!root) return;
